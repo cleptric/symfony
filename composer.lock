@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afc88b8b6779cec3a59a9e332544c4ed",
+    "content-hash": "be8dc72b831ad99be5eb9a06226c2549",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -3156,17 +3156,11 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "3.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "0d162e2516f8254e821a1376018e1e021f910bff"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/0d162e2516f8254e821a1376018e1e021f910bff",
-                "reference": "0d162e2516f8254e821a1376018e1e021f910bff",
-                "shasum": ""
+                "type": "path",
+                "url": "/Users/cleptric/Developer/php",
+                "reference": "6b87d21b64124cb35dcfa719e16c18f01ea77ff5"
             },
             "require": {
                 "ext-json": "*",
@@ -3221,7 +3215,25 @@
                     "Sentry\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Sentry\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "tests": [
+                    "vendor/bin/phpunit --verbose"
+                ],
+                "phpcs": [
+                    "vendor/bin/php-cs-fixer fix --verbose --diff --dry-run"
+                ],
+                "phpstan": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "psalm": [
+                    "vendor/bin/psalm"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -3242,21 +3254,10 @@
                 "logging",
                 "sentry"
             ],
-            "support": {
-                "issues": "https://github.com/getsentry/sentry-php/issues",
-                "source": "https://github.com/getsentry/sentry-php/tree/3.9.0"
-            },
-            "funding": [
-                {
-                    "url": "https://sentry.io/",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://sentry.io/pricing/",
-                    "type": "custom"
-                }
-            ],
-            "time": "2022-10-05T09:35:42+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": false
+            }
         },
         {
             "name": "symfony/asset",
@@ -10740,7 +10741,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "sentry/sentry": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
