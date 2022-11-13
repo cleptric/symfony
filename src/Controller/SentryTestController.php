@@ -2,18 +2,29 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SentryTestController
+class SentryTestController extends AbstractController
 {
 
-    #[Route('/sentry/index')]
-    public function index(): Response
+    #[Route('/sentry/index/{name}')]
+    public function index(Request $request, string $name = null): JsonResponse
     {
-        $response = new Response('Servus 👋', Response::HTTP_OK);
+        $response = new JsonResponse([
+            'foo' => 'bar',
+        ]);
 
         return $response;
+    }
+
+    #[Route('/sentry/view')]
+    public function view(): Response
+    {
+        return $this->render('view.html.twig');
     }
 
     #[Route('/sentry/test-log')]
